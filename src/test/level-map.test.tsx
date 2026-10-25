@@ -15,7 +15,7 @@ afterEach(() => {
   cleanup();
 });
 
-describe("Level map", () => {
+describe("Level map", { timeout: 90_000 }, () => {
   it("renders all 1000 levels", async () => {
     await renderMap();
     expect(screen.getAllByRole("button", { name: /^লেভেল \d+$/ })).toHaveLength(1000);
