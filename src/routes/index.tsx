@@ -243,7 +243,7 @@ export function LevelMapPage() {
               </span>
               <span aria-hidden className="-mt-1.5 h-2.5 w-11 rounded-full bg-game-base opacity-90" />
               {isDone && (
-                <span className="mt-0.5 flex gap-0.5 text-[11px] leading-none" aria-label={`${starCount} তারা`}>
+                <span data-testid={`stars-${level}`} className="mt-0.5 flex gap-0.5 text-[11px] leading-none" aria-label={`${starCount} তারা`}>
                   {[1, 2, 3].map((s) => (
                     <span key={s} className={s <= starCount ? "text-game-gold" : "text-white/25"}>
                       ★
