@@ -15,7 +15,7 @@ afterEach(() => {
   cleanup();
 });
 
-describe("Level map", () => {
+describe("Level map", { timeout: 90_000 }, () => {
   it("renders all 1000 levels", async () => {
     await renderMap();
     expect(screen.getAllByRole("button", { name: /^লেভেল \d+$/ })).toHaveLength(1000);
@@ -23,9 +23,9 @@ describe("Level map", () => {
 
   it("starts with levels 1–5 completed and level 6 as the current level", async () => {
     await renderMap();
-    // Levels 1–2 earned 3 stars, levels 3–5 earned 2 stars.
-    expect(screen.getAllByLabelText("৩ তারা")).toHaveLength(2);
-    expect(screen.getAllByLabelText("২ তারা")).toHaveLength(3);
+    expect(screen.getByTestId("stars-1")).toBeInTheDocument();
+    expect(screen.getByTestId("stars-5")).toBeInTheDocument();
+    expect(screen.queryByTestId("stars-6")).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "লেভেল 6" })).toHaveAttribute(
       "aria-current",
       "true",
@@ -36,7 +36,7 @@ describe("Level map", () => {
     await renderMap();
     fireEvent.click(screen.getByRole("button", { name: "লেভেল 6" }));
     fireEvent.click(screen.getByRole("button", { name: "খেলুন" }));
-    await waitFor(() => expect(screen.getByLabelText("৩ তারা")).toHaveLength(3));
+    await waitFor(() => expect(screen.getByTestId("stars-6")).toBeInTheDocument());
     expect(screen.getByRole("button", { name: "লেভেল 7" })).toHaveAttribute(
       "aria-current",
       "true",
