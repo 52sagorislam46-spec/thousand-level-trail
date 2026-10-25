@@ -9,7 +9,6 @@ import {
   MAP_WIDTH,
   saveProgress,
   smoothPath,
-  totalStars,
   type Progress,
 } from "@/lib/levels";
 import { cn } from "@/lib/utils";
@@ -80,8 +79,6 @@ export function LevelMapPage() {
       </div>
     );
   }
-
-  const stars = totalStars(progress);
 
   const completeLevel = (level: number) => {
     const next: Progress = {
