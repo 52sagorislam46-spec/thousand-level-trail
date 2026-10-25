@@ -123,21 +123,21 @@ export function LevelMapPage() {
     <div className="game-bg min-h-screen text-game-text">
       <header className="sticky top-0 z-50 mx-auto flex w-full max-w-[480px] items-center justify-end gap-2 px-3 py-2.5">
         <button
-            type="button"
-            onClick={resetProgress}
-            aria-label="প্রগ্রেস রিসেট"
-            className="flex h-10 w-10 items-center justify-center rounded-xl bg-game-header/90 text-game-text shadow-lg ring-1 ring-white/15 backdrop-blur transition-transform active:scale-95"
-          >
-            <RotateCcw className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => setShowHelp(true)}
-            aria-label="সাহায্য"
-            className="flex h-10 w-10 items-center justify-center rounded-xl bg-game-header/90 text-game-text shadow-lg ring-1 ring-white/15 backdrop-blur transition-transform active:scale-95"
-          >
-            <CircleHelp className="h-5 w-5" />
-          </button>
+          type="button"
+          onClick={resetProgress}
+          aria-label="প্রগ্রেস রিসেট"
+          className="flex h-10 w-10 items-center justify-center rounded-xl bg-game-header/90 text-game-text shadow-lg ring-1 ring-white/15 backdrop-blur transition-transform active:scale-95"
+        >
+          <RotateCcw className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          onClick={() => setShowHelp(true)}
+          aria-label="সাহায্য"
+          className="flex h-10 w-10 items-center justify-center rounded-xl bg-game-header/90 text-game-text shadow-lg ring-1 ring-white/15 backdrop-blur transition-transform active:scale-95"
+        >
+          <CircleHelp className="h-5 w-5" />
+        </button>
       </header>
 
       <main className="relative mx-auto w-full max-w-[480px]" style={{ height }}>
