@@ -9,7 +9,6 @@ import {
   MAP_WIDTH,
   saveProgress,
   smoothPath,
-  totalStars,
   type Progress,
 } from "@/lib/levels";
 import { cn } from "@/lib/utils";
@@ -81,8 +80,6 @@ export function LevelMapPage() {
     );
   }
 
-  const stars = totalStars(progress);
-
   const completeLevel = (level: number) => {
     const next: Progress = {
       unlocked: Math.max(progress.unlocked, level + 1),
@@ -121,32 +118,23 @@ export function LevelMapPage() {
 
   return (
     <div className="game-bg min-h-screen text-game-text">
-      <header className="sticky top-0 z-50 mx-auto flex w-full max-w-[480px] items-center justify-between gap-2 px-3 py-2.5">
-        <div
-          data-testid="total-stars"
-          className="flex items-center gap-1.5 rounded-full border-2 border-game-gold-deep/60 bg-game-header/90 px-4 py-1.5 shadow-lg backdrop-blur"
+      <header className="sticky top-0 z-50 mx-auto flex w-full max-w-[480px] items-center justify-end gap-2 px-3 py-2.5">
+        <button
+          type="button"
+          onClick={resetProgress}
+          aria-label="প্রগ্রেস রিসেট"
+          className="flex h-10 w-10 items-center justify-center rounded-xl bg-game-header/90 text-game-text shadow-lg ring-1 ring-white/15 backdrop-blur transition-transform active:scale-95"
         >
-          <Star className="h-5 w-5 fill-game-gold text-game-gold" />
-          <span className="text-lg font-bold tabular-nums">{stars}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={resetProgress}
-            aria-label="প্রগ্রেস রিসেট"
-            className="flex h-10 w-10 items-center justify-center rounded-xl bg-game-header/90 text-game-text shadow-lg ring-1 ring-white/15 backdrop-blur transition-transform active:scale-95"
-          >
-            <RotateCcw className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => setShowHelp(true)}
-            aria-label="সাহায্য"
-            className="flex h-10 w-10 items-center justify-center rounded-xl bg-game-header/90 text-game-text shadow-lg ring-1 ring-white/15 backdrop-blur transition-transform active:scale-95"
-          >
-            <CircleHelp className="h-5 w-5" />
-          </button>
-        </div>
+          <RotateCcw className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          onClick={() => setShowHelp(true)}
+          aria-label="সাহায্য"
+          className="flex h-10 w-10 items-center justify-center rounded-xl bg-game-header/90 text-game-text shadow-lg ring-1 ring-white/15 backdrop-blur transition-transform active:scale-95"
+        >
+          <CircleHelp className="h-5 w-5" />
+        </button>
       </header>
 
       <main className="relative mx-auto w-full max-w-[480px]" style={{ height }}>
@@ -255,7 +243,7 @@ export function LevelMapPage() {
               </span>
               <span aria-hidden className="-mt-1.5 h-2.5 w-11 rounded-full bg-game-base opacity-90" />
               {isDone && (
-                <span className="mt-0.5 flex gap-0.5 text-[11px] leading-none" aria-label={`${starCount} তারা`}>
+                <span data-testid={`stars-${level}`} className="mt-0.5 flex gap-0.5 text-[11px] leading-none" aria-label={`${starCount} তারা`}>
                   {[1, 2, 3].map((s) => (
                     <span key={s} className={s <= starCount ? "text-game-gold" : "text-white/25"}>
                       ★
