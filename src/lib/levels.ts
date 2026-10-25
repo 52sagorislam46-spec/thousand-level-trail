@@ -32,10 +32,10 @@ export function smoothPath(pts: LevelPoint[]): string {
   const p = [pts[0], ...pts, pts[pts.length - 1]];
   let d = `M ${p[1].x.toFixed(1)} ${p[1].y.toFixed(1)}`;
   for (let i = 1; i < p.length - 2; i++) {
-    const p0 = p[i - 1];
-    const p1 = p[i];
-    const p2 = p[i + 1];
-    const p3 = p[i + 2];
+    const p0 = p[i - 1]!;
+    const p1 = p[i]!;
+    const p2 = p[i + 1]!;
+    const p3 = p[i + 2]!;
     const c1x = p1.x + (p2.x - p0.x) / 6;
     const c1y = p1.y + (p2.y - p0.y) / 6;
     const c2x = p2.x - (p3.x - p1.x) / 6;
