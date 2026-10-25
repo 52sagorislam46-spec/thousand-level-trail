@@ -17,7 +17,7 @@ export function buildLevelLayout(total: number = LEVEL_TOTAL) {
   const pts: LevelPoint[] = [];
   const height = TOP_PAD + total * SPACING + BOTTOM_PAD;
   for (let i = 0; i < total; i++) {
-    const f = XFRACTIONS[i % 4];
+    const f = XFRACTIONS[i % 4] ?? 0.5;
     const x = 30 + f * (MAP_WIDTH - 60) + Math.cos(i * 2.1) * 8;
     // Level 1 sits at the bottom of the map; higher levels climb upward.
     const y = height - BOTTOM_PAD - i * SPACING + Math.sin(i * 1.3) * 6;
@@ -30,7 +30,7 @@ export function buildLevelLayout(total: number = LEVEL_TOTAL) {
 export function smoothPath(pts: LevelPoint[]): string {
   if (pts.length < 2) return "";
   const p = [pts[0], ...pts, pts[pts.length - 1]];
-  let d = `M ${p[1].x.toFixed(1)} ${p[1].y.toFixed(1)}`;
+  let d = `M ${p[1]!.x.toFixed(1)} ${p[1]!.y.toFixed(1)}`;
   for (let i = 1; i < p.length - 2; i++) {
     const p0 = p[i - 1]!;
     const p1 = p[i]!;
