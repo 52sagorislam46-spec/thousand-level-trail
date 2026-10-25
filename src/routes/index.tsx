@@ -121,16 +121,8 @@ export function LevelMapPage() {
 
   return (
     <div className="game-bg min-h-screen text-game-text">
-      <header className="sticky top-0 z-50 mx-auto flex w-full max-w-[480px] items-center justify-between gap-2 px-3 py-2.5">
-        <div
-          data-testid="total-stars"
-          className="flex items-center gap-1.5 rounded-full border-2 border-game-gold-deep/60 bg-game-header/90 px-4 py-1.5 shadow-lg backdrop-blur"
-        >
-          <Star className="h-5 w-5 fill-game-gold text-game-gold" />
-          <span className="text-lg font-bold tabular-nums">{stars}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <button
+      <header className="sticky top-0 z-50 mx-auto flex w-full max-w-[480px] items-center justify-end gap-2 px-3 py-2.5">
+        <button
             type="button"
             onClick={resetProgress}
             aria-label="প্রগ্রেস রিসেট"
@@ -146,7 +138,6 @@ export function LevelMapPage() {
           >
             <CircleHelp className="h-5 w-5" />
           </button>
-        </div>
       </header>
 
       <main className="relative mx-auto w-full max-w-[480px]" style={{ height }}>
